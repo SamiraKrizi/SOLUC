@@ -44,8 +44,6 @@ public class ReponseReclamation implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id")
     private User user;
-    
-    private int d;
 
     public ReponseReclamation() {
 
@@ -95,14 +93,6 @@ public class ReponseReclamation implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public int getD() {
-        return d;
-    }
-
-    public void setD(int d) {
-        this.d = d;
     }
     
     
