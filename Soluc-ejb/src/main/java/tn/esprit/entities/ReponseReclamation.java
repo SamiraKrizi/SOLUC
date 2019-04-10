@@ -45,6 +45,11 @@ public class ReponseReclamation implements Serializable {
     @JoinColumn(name = "id")
     private User user;
 
+    public String getKk() {
+        return kk;
+    }
+     
+    private String kk;
     public ReponseReclamation() {
 
     }
