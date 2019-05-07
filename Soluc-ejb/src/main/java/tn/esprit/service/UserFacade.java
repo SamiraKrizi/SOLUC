@@ -5,11 +5,14 @@
  */
 package tn.esprit.service;
 
-import tn.esprit.facade.AbstractFacade;
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+
 import tn.esprit.entities.User;
+import tn.esprit.facade.AbstractFacade;
 import tn.esprit.iservices.UserFacadeRemote;
 
 /**
@@ -17,6 +20,7 @@ import tn.esprit.iservices.UserFacadeRemote;
  * @author ksamih
  */
 @Stateless
+@LocalBean
 public class UserFacade extends AbstractFacade<User> implements UserFacadeRemote {
 
     @PersistenceContext(unitName = "Soluc-ejb")
@@ -29,6 +33,27 @@ public class UserFacade extends AbstractFacade<User> implements UserFacadeRemote
 
     public UserFacade() {
         super(User.class);
+    }
+    
+    public User login(String username, String password)
+    {
+    	User user = new User();
+    	
+    	try{
+    		user = em.createQuery("SELECT U FROM User U WHERE U.username= :username AND U.password= :password", User.class)
+    				.setParameter("username", username)
+    				.setParameter("password", password)
+    				.getSingleResult();
+    		
+    		return user;
+    	}catch(NoResultException ex)
+    	{
+    		User Error = new User();
+    		Error.setEmail("empty");
+    		return Error;
+    	}
+    	
+    	
     }
     
 }

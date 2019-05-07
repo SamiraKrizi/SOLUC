@@ -16,18 +16,18 @@ import tn.esprit.entities.Shop;
 @Remote
 public interface ShopFacadeRemote {
 
-    void create(Shop shop);
+    public void create(Shop shop);
 
-    void edit(Shop shop);
+    public void edit(Shop shop);
 
-    void remove(Shop shop);
+    public void remove(Shop shop);
 
-    Shop find(Object id);
+    public Shop find(Object id);
 
-    List<Shop> findAll();
+    public List<Shop> findAll();
 
-    List<Shop> findRange(int[] range);
+    public List<Shop> findRange(int[] range);
 
-    int count();
+    public int count();
     
 }

@@ -5,11 +5,13 @@
  */
 package tn.esprit.service;
 
-import tn.esprit.facade.AbstractFacade;
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import tn.esprit.entities.Shop;
+import tn.esprit.facade.AbstractFacade;
 import tn.esprit.iservices.ShopFacadeRemote;
 
 /**
@@ -17,7 +19,8 @@ import tn.esprit.iservices.ShopFacadeRemote;
  * @author ksamih
  */
 @Stateless
-public class ShopFacade extends AbstractFacade<Shop> implements ShopFacadeRemote {
+@LocalBean
+public class ShopFacade  extends AbstractFacade<Shop> implements ShopFacadeRemote {
 
     @PersistenceContext(unitName = "Soluc-ejb")
     private EntityManager em;
@@ -30,5 +33,5 @@ public class ShopFacade extends AbstractFacade<Shop> implements ShopFacadeRemote
     public ShopFacade() {
         super(Shop.class);
     }
-    
+   
 }

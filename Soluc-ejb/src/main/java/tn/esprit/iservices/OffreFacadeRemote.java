@@ -6,7 +6,9 @@
 package tn.esprit.iservices;
 
 import java.util.List;
+
 import javax.ejb.Remote;
+
 import tn.esprit.entities.Offre;
 
 /**
